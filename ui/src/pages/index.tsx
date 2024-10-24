@@ -1,13 +1,24 @@
 import Head from 'next/head'
 import styled from 'styled-components'
-import { useEffect } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useMobile } from '@/hooks/useMobile'
+import { Modal } from '@/components/Modal'
+import { useModal } from '@/hooks/useModal'
 
 export default function Home() {
 	const { isMobile } = useMobile()
+	const [modalTitle, setModalTitle] = useState('')
+	const modalDescription = useMemo(() => 'COMING SOON', [])
+	const { isOpen, openModal, closeModal } = useModal()
+
 	useEffect(() => {
 		document.title = 'Girlwifcat'
 	}, [])
+
+	const handleClick = (title: string) => {
+		setModalTitle(title)
+		openModal()
+	}
 
 	return (
 		<>
@@ -25,11 +36,27 @@ export default function Home() {
 			<Container isMobile={isMobile}>
 				<TitleLogo isMobile={isMobile}>Girlwifcat</TitleLogo>
 				<List isMobile={isMobile}>
-					<ListItem>{`> READ THE GIRLWIFCAT COMPENDIUM`}</ListItem>
-					<ListItem>{`> ETERNAL CHATROOM`}</ListItem>
-					<ListItem>{`> PRIMORDIAL CHATLOGS`}</ListItem>
-					<ListItem>{`> SOCIALS`}</ListItem>
+					<ListItem
+						onClick={() => handleClick('COMPENDIUM')}
+					>{`> COMPENDIUM`}</ListItem>
+					<ListItem
+						onClick={() => handleClick('CHATROOM')}
+					>{`> CHATROOM`}</ListItem>
+					<ListItem
+						onClick={() => handleClick('CHATLOGS')}
+					>{`> CHATLOGS`}</ListItem>
+					<ListItem
+						onClick={() => handleClick('SOCIALS')}
+					>{`> SOCIALS`}</ListItem>
 				</List>
+				{isOpen && (
+					<Modal
+						hasButtons
+						title={modalTitle}
+						description={modalDescription}
+						closeModal={closeModal}
+					/>
+				)}
 			</Container>
 		</>
 	)
