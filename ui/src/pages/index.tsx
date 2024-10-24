@@ -49,7 +49,11 @@ export default function Home() {
 						width={108.8}
 					/>
 				</ImageContainer>
-				<TitleLogo isMobile={isMobile}>Girlwifcat</TitleLogo>
+				{/* <TitleLogo isMobile={isMobile}>Girlwifcat</TitleLogo> */}
+				<LogoImage
+					src='/images/girlwifcat-logo.svg'
+					alt='Girlwifcat Logo'
+				/>
 				<List isMobile={isMobile}>
 					<ListItem
 						onClick={() => handleClick('COMPENDIUM')}
@@ -125,4 +129,9 @@ const ImageContainer = styled.div<{ isMobile: boolean }>`
 		width: 100%;
 		height: auto;
 	}
+`
+
+const LogoImage = styled.img`
+	cursor: pointer;
+	height: 64px;
 `
