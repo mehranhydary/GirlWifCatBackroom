@@ -92,10 +92,10 @@ const Container = styled.div<{ isMobile: boolean }>`
 	align-items: ${({ isMobile }) => (isMobile ? 'center' : 'flex-start')};
 	text-align: center;
 `
-const TitleLogo = styled.div<{ isMobile?: boolean }>`
-	font-size: ${({ isMobile }) => (isMobile ? '2.5rem' : '3rem')};
-	font-family: 'Aexir', sans-serif;
-`
+// const TitleLogo = styled.div<{ isMobile?: boolean }>`
+// 	font-size: ${({ isMobile }) => (isMobile ? '2.5rem' : '3rem')};
+// 	font-family: 'Aexir', sans-serif;
+// `
 
 const List = styled.div<{ isMobile: boolean }>`
 	display: flex;
