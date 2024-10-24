@@ -24,7 +24,8 @@ export default async function handler(
 			})
 
 			return res.status(200).json({ completion: response })
-		} catch (error: any) {
+		} catch (error: unknown) {
+			console.error(error)
 			return res
 				.status(500)
 				.json({ error: 'Failed to generate completion' })
