@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { useMobile } from '@/hooks/useMobile'
 import { Modal } from '@/components/Modal'
 import { useModal } from '@/hooks/useModal'
+import Image from 'next/image'
 
 export default function Home() {
 	const { isMobile } = useMobile()
@@ -34,6 +35,20 @@ export default function Home() {
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 			<Container isMobile={isMobile}>
+				<ImageContainer isMobile={isMobile}>
+					<Image
+						src='/images/girl.svg'
+						alt='Girl'
+						height={129.6}
+						width={108.8}
+					/>
+					<Image
+						src='/images/cat.svg'
+						alt='Cat'
+						height={129.6}
+						width={108.8}
+					/>
+				</ImageContainer>
 				<TitleLogo isMobile={isMobile}>Girlwifcat</TitleLogo>
 				<List isMobile={isMobile}>
 					<ListItem
@@ -51,7 +66,6 @@ export default function Home() {
 				</List>
 				{isOpen && (
 					<Modal
-						hasButtons
 						title={modalTitle}
 						description={modalDescription}
 						closeModal={closeModal}
@@ -76,7 +90,6 @@ const Container = styled.div<{ isMobile: boolean }>`
 `
 const TitleLogo = styled.div<{ isMobile?: boolean }>`
 	font-size: ${({ isMobile }) => (isMobile ? '2.5rem' : '3rem')};
-	margin-bottom: 1rem;
 	font-family: 'Aexir', sans-serif;
 `
 
@@ -98,5 +111,18 @@ const ListItem = styled.div`
 
 	&:hover {
 		text-decoration: underline;
+	}
+`
+const ImageContainer = styled.div<{ isMobile: boolean }>`
+	width: ${({ isMobile }) => (isMobile ? '100%' : '30%')};
+	height: auto;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	margin: ${({ isMobile }) => (isMobile ? '1rem 0' : '1rem 0')};
+
+	img {
+		width: 100%;
+		height: auto;
 	}
 `
