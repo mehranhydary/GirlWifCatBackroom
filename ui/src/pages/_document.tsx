@@ -1,13 +1,18 @@
-import { Html, Head, Main, NextScript } from "next/document";
+import { StyledComponentsRegistry } from '@/components/StyleSheetManager'
+import { GlobalStyles } from '@/styles/createGlobalStyle'
+import { Html, Head, Main, NextScript } from 'next/document'
 
 export default function Document() {
-  return (
-    <Html lang="en">
-      <Head />
-      <body>
-        <Main />
-        <NextScript />
-      </body>
-    </Html>
-  );
+	return (
+		<Html lang='en'>
+			<Head />
+			<body>
+				<GlobalStyles />
+				<StyledComponentsRegistry>
+					<Main />
+					<NextScript />
+				</StyledComponentsRegistry>
+			</body>
+		</Html>
+	)
 }
