@@ -68,6 +68,15 @@ export default function Home() {
 						onClick={() => handleClick('SOCIALS')}
 					>{`> SOCIALS`}</ListItem>
 				</List>
+				<DexScreenerLink
+					onClick={() =>
+						window.open(
+							`https://dexscreener.com/solana/97gqskohg97verbuwuhqu6sxp1rnw1udqj4u33rdeyyh`
+						)
+					}
+				>
+					Dexscreener
+				</DexScreenerLink>
 				{isOpen && (
 					<Modal
 						title={modalTitle}
@@ -134,4 +143,18 @@ const ImageContainer = styled.div<{ isMobile: boolean }>`
 const LogoImage = styled.img`
 	cursor: pointer;
 	height: 64px;
+`
+
+const DexScreenerLink = styled.div`
+	cursor: pointer;
+	text-transform: uppercase;
+	margin-top: 2rem;
+	font-size: 3rem;
+	font-family: 'Helvetica', sans-serif;
+	font-family: 'Aexir', sans-serif;
+
+	&:hover {
+		background: linear-gradient(90deg, pink, yellow);
+		color: white;
+	}
 `
